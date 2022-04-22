@@ -21,9 +21,11 @@ cp -r ~/Tools/Mac/Mac-Icons/Mojave-CT-Light ~/.icons
 cp -r ~/Tools/Mac/Mac-Cursor/Mac-Cursor-Set ~/.icons
 
 mkdir -p ~/.themes
-cp -r ~/Tools/Mac/Mac-Icons/Mojave-light ~/.themes
+cp -r ~/Tools/Mac/Mac-Themes/Mojave-light ~/.themes
 
 sudo apt install plank
+
+sudo apt remove gnome-shell-extension-ubuntu-dock
 ```
 
-Then, insert Plank in gnome-tweaks startup application
+Then, insert Plank in gnome-tweaks startup application and when Log-in choose the option Ubuntu with Xorg
