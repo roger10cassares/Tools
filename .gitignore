@@ -2,7 +2,11 @@ Android/src
 Android/android-studio
 Android/SDK
 
+Anydesk/src
+
 Barrier/src
+
+Chrome/src
 
 Chromium/src
 
@@ -24,12 +28,18 @@ Golang/src
 Java/OpenJDK/jdk-11
 Java/OpenJDK/src
 
+TeamViewer/src
+
+Tp-link/src
+
+Tree/src
+
 Typora/src
 
+VLC/src
+
+VSCode/src
+
+WPS/src
+
 ZSH/src
-
-
-Android
-
-  Barrier   Curl    Expo    Fonts   Java  README.md  src
-android-studio  anydesk_6.1.1-1_amd64.deb                Chromium  Docker  FFmpeg  Golang  Mac   SDK
