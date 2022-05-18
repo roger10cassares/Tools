@@ -1,1 +1,33 @@
-old/
+Android/src
+Android/android-studio
+Android/SDK
+
+Barrier/src
+
+Chromium/src
+
+Curl/src
+
+Docker/src
+
+Expo/src
+
+FFmpeg/src
+
+Fonts/src
+
+Golang/go
+Golang/src
+
+Java/OpenJDK/jdk-11
+Java/OpenJDK/src
+
+Typora/src
+
+ZSH/src
+
+
+Android
+
+  Barrier   Curl    Expo    Fonts   Java  README.md  src
+android-studio  anydesk_6.1.1-1_amd64.deb                Chromium  Docker  FFmpeg  Golang  Mac   SDK
