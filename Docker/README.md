@@ -1,35 +1,25 @@
 ## Docker
+*From: https://docs.docker.com/engine/install/ubuntu/*
 
 ### Uninstall and remove old stuffs
 
 At first, to completely uninstall any Docker in a Debian based system. Follow the steps as bellow:
 
-- Identify what installed package you have:
+- Uninstall the Docker Engine, CLI, Containerd, and Docker Compose packages:
 
     ```bash
-    dpkg -l | grep -i docker
+    sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-compose-plugin
     ```
 
-- purge any docker binaries and packages and files 
 
-    ```bash
-    sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli
-    sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce
-    ```
+- Images, containers, volumes, or customized configuration files on your host are not automatically removed. To delete all images, containers, and volumes:
 
-- The above commands will not remove images, containers, volumes, or user created configuration files on your host. If you wish to delete all images, containers, and volumes run the following commands:
+  ```bash
+   sudo rm -rf /var/lib/docker
+   sudo rm -rf /var/lib/containerd
+  ```
 
-    ```bash
-    sudo rm -rf /var/lib/docker /etc/docker
-    sudo rm /etc/apparmor.d/docker
-    sudo groupdel docker
-    sudo rm -rf /var/run/docker.sock
-    sudo rm /usr/local/bin/docker-compose
-    sudo rm /usr/bin/docker-compose
-    ```
-
-- At this pont, all Docker stuffs should been completely removed from the system.
-
+  At this pont, all Docker stuffs should been completely removed from the system.
 ### Docker install
 
 Please, install the same Docker stuffs version in all machines that should contemplate the cluster
@@ -53,11 +43,11 @@ Please, install the same Docker stuffs version in all machines that should conte
 
 - Use the following command to set up the stable repository. To add the nightly or test repository, add the word nightly or test (or both) after the word stable in the commands below. Learn about nightly and test channels.
 
-    ```bash
-    echo \
-      "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    ```
+  ```bash
+  echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
 
 - Update the apt package to enable the latest releases for the Docker Engine and containerd:
 
@@ -65,38 +55,69 @@ Please, install the same Docker stuffs version in all machines that should conte
      sudo apt update
     ```
 
-- To install a specific version of Docker Engine, list the available versions in the repo, then select and install:
+- To install a specific version of `docker-ce`, `docker-ce-cli`,  `containerd.io`, and `docker-compose-plugin`, list the available versions in the repo, then select and install:
 
     - List the versions available in the repo:
 
         ```bash
         apt-cache madison docker-ce
         ----
-docker-ce | 5:20.10.14~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
- docker-ce | 5:20.10.13~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
-        ```
-
-    - Install a specific version using the version string from the second column, for example, `5:20.10.14~3-0~ubuntu-jammy`.
-
-        ```bash
-        sudo apt install docker-ce=5:20.10.14~3-0~ubuntu-jammy docker-ce-cli=5:20.10.14~3-0~ubuntu-jammy containerd.io=1.5.11-1
-        ```
+         docker-ce | 5:20.10.16~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+         docker-ce | 5:20.10.15~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+         docker-ce | 5:20.10.14~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+         docker-ce | 5:20.10.13~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        ----
         
-        To create the docker group and add your user. Create the docker group:
-```bash
- sudo groupadd docker
-```
-Add your user to the docker group.
+        apt-cache madison docker-ce-cli 
+        ----
+        docker-ce-cli | 5:20.10.16~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        docker-ce-cli | 5:20.10.15~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        docker-ce-cli | 5:20.10.14~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        docker-ce-cli | 5:20.10.13~3-0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        ----
+        
+        apt-cache madison containerd.io
+        ----
+        containerd.io |    1.6.4-1 | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        containerd.io |   1.5.11-1 | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        containerd.io |   1.5.10-1 | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        ----
+        
+        apt-cache madison docker-compose-plugin
+        ----
+        docker-compose-plugin | 2.5.0~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        docker-compose-plugin | 2.3.3~ubuntu-jammy | https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+        ```
 
-```bash
- sudo usermod -aG docker $USER
- ```
- 
+    - Install a specific version using the version string from the second column, for example,
+       `5:20.10.14~3-0~ubuntu-jammy`
 
-- Verify that Docker Engine is installed correctly by running the hello-world image.
+       ```bash
+       sudo apt-get install docker-ce=5:20.10.16~3-0~ubuntu-jammy docker-ce-cli=5:20.10.16~3-0~ubuntu-jammy containerd.io=1.6.4-1 docker-compose-plugin=2.5.0~ubuntu-jammy
+       ```
+
+       
+
+- To run docker without `sudo`,  create the docker `group` and add your `user`. Create the docker `group`:
 
     ```bash
-     sudo docker run hello-world
+    sudo groupadd docker
+    ```
+
+- Add your user to the docker group.
+
+    ```bash
+    sudo usermod -aG docker $USER
+    ```
+
+- After that, reboot the system to apply this changes
+
+    
+
+- Then, verify that Docker Engine is installed correctly by running the hello-world image.
+
+    ```bash
+    sudo docker run hello-world
      ----
      Unable to find image 'hello-world:latest' locally
     latest: Pulling from library/hello-world
@@ -138,4 +159,7 @@ Add your user to the docker group.
 - Verify the running status of the Docker service running
 
     ```bash
-    sudo systectl status docker.service
+    sudo systemctl status docker.service
+    ```
+
+       
