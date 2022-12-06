@@ -16,6 +16,9 @@ Docker/src
 
 Expo/src
 
+Espressif/esp
+Espressif/espressif
+
 FFmpeg/src
 
 Fonts/JetBrainsMono-2.225
@@ -23,6 +26,8 @@ Fonts/src
 Fonts/old
 
 Golang/go
+Golang/go-1.18.1
+Golang/go-1.19.3
 Golang/src
 
 Java/OpenJDK/jdk-11
@@ -32,6 +37,10 @@ Kubernetes/src
 
 Nodejs/node-v16.14.2-linux-x64
 Nodejs/src
+
+SonarScanner/sonar-scanner-4.7.0.2747-linux
+
+Teams/src
 
 TeamViewer/src
 
