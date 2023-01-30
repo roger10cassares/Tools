@@ -1,0 +1,1 @@
+Install the Vs Code Plugin to the VERSION directory
