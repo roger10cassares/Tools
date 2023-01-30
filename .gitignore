@@ -14,6 +14,11 @@ Curl/src
 
 Docker/src
 
+Espressif/5.0/esp-idf
+Espressif/5.0/esp-idf-tools
+Espressif/5.0/esp-protocols
+Espressif/5.0/esp-idf-v5.0.zip
+
 Expo/src
 
 Espressif/esp
@@ -28,6 +33,7 @@ Fonts/old
 Golang/go
 Golang/go-1.18.1
 Golang/go-1.19.3
+Golang/go-1.19.5.linux-amd64
 Golang/src
 
 Java/OpenJDK/jdk-11
@@ -35,14 +41,11 @@ Java/OpenJDK/src
 
 Kubernetes/src
 
-Nodejs/node-v16.14.2-linux-x64
 Nodejs/src
 
+ReactNative/src
+
 SonarScanner/sonar-scanner-4.7.0.2747-linux
-
-Teams/src
-
-TeamViewer/src
 
 Tp-link/src
 
